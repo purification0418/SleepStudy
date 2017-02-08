@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     
     }
     
-    
+var allsubjects: Array<Subject> = []
 
 class Subject{
     
@@ -43,7 +43,7 @@ class Subject{
         self.place = place
         self.time = time
         
-        
+            
     }
 }
 
@@ -77,6 +77,7 @@ class Record{
     var captures:Array<Capture>
     let date:String
     let length:String
+    var playednum: Int
     
     init(path:String, date:String, length:String){
         self.path = path
@@ -84,6 +85,8 @@ class Record{
         self.memos = []
         self.captures = []
         self.length = length
+        self.playednum = 0
+        
     }
 }
 

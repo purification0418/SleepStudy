@@ -31,7 +31,7 @@ class TimeTableViewController: UITableViewController {
         
         //여기에 추가
         
-       /*
+       
         subjects[0].records += [Record(path: "/rec/file1.mov",date: "3월 2일", length: "01:23:45"),
                                 Record(path: "/rec/file2.mov",date: "3월 4일", length: "01:23:45"),
                                 Record(path: "/rec/file3.mov",date: "3월 9일", length: "01:23:45")]
@@ -83,7 +83,7 @@ class TimeTableViewController: UITableViewController {
         subjects[2].records[0].captures += [Capture(path: "/cap/pic1.png", time:121)]
         subjects[2].records[1].captures += [Capture(path: "/cap/pic2.png", time:245)]
         subjects[2].records[2].captures += [Capture(path: "/cap/pic3.png", time:1554)]
-         */
+         
     }
     
     override func didReceiveMemoryWarning() {
