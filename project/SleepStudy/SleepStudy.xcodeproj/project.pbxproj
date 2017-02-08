@@ -197,11 +197,6 @@
 				ED62FD911E445A51000A92D2 /* BackButtonDelegate.swift in Sources */,
 				E58E68641E37284B0062AC18 /* TimeTableViewController.swift in Sources */,
 				E51F2F231E4319C7009DDF18 /* RecordViewController.swift in Sources */,
-<<<<<<< HEAD
-=======
-				ED96D6E41E4AE1670062D5A5 /* TimetableCollectionViewCollectionViewController.swift in Sources */,
-				E5BA275D1E49AB94000AB2C1 /* CustomCell.swift in Sources */,
->>>>>>> origin/허-정화
 				ED62FD931E445A51000A92D2 /* Note.swift in Sources */,
 				ED62FD961E445A51000A92D2 /* NotesViewController.swift in Sources */,
 				EDBD7C261E42FE2B0013EEC6 /* CameraViewController.swift in Sources */,
