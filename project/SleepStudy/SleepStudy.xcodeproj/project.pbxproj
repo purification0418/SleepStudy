@@ -17,6 +17,8 @@
 		E57D95331E2F6076003B40AC /* UIViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D95321E2F6076003B40AC /* UIViewController+Navigation.swift */; };
 		E58E68641E37284B0062AC18 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58E68631E37284B0062AC18 /* TimeTableViewController.swift */; };
 		E58E68661E37325E0062AC18 /* RecordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58E68651E37325E0062AC18 /* RecordTableViewController.swift */; };
+		E5BA275D1E49AB94000AB2C1 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA275C1E49AB94000AB2C1 /* CustomCell.swift */; };
+		E5BA275F1E49ABBF000AB2C1 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA275E1E49ABBE000AB2C1 /* DetailsViewController.swift */; };
 		ED62FD911E445A51000A92D2 /* BackButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62FD8B1E445A51000A92D2 /* BackButtonDelegate.swift */; };
 		ED62FD921E445A51000A92D2 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62FD8C1E445A51000A92D2 /* Database.swift */; };
 		ED62FD931E445A51000A92D2 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62FD8D1E445A51000A92D2 /* Note.swift */; };
@@ -40,6 +42,8 @@
 		E57D95321E2F6076003B40AC /* UIViewController+Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Navigation.swift"; sourceTree = "<group>"; };
 		E58E68631E37284B0062AC18 /* TimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
 		E58E68651E37325E0062AC18 /* RecordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableViewController.swift; sourceTree = "<group>"; };
+		E5BA275C1E49AB94000AB2C1 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		E5BA275E1E49ABBE000AB2C1 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		ED62FD8B1E445A51000A92D2 /* BackButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackButtonDelegate.swift; sourceTree = "<group>"; };
 		ED62FD8C1E445A51000A92D2 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		ED62FD8D1E445A51000A92D2 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 		E57D95141E2F5BD6003B40AC = {
 			isa = PBXGroup;
 			children = (
+				E5BA275C1E49AB94000AB2C1 /* CustomCell.swift */,
+				E5BA275E1E49ABBE000AB2C1 /* DetailsViewController.swift */,
 				E57D951F1E2F5BD6003B40AC /* SleepStudy */,
 				E57D951E1E2F5BD6003B40AC /* Products */,
 			);
@@ -191,9 +197,15 @@
 				ED62FD911E445A51000A92D2 /* BackButtonDelegate.swift in Sources */,
 				E58E68641E37284B0062AC18 /* TimeTableViewController.swift in Sources */,
 				E51F2F231E4319C7009DDF18 /* RecordViewController.swift in Sources */,
+<<<<<<< HEAD
+=======
+				ED96D6E41E4AE1670062D5A5 /* TimetableCollectionViewCollectionViewController.swift in Sources */,
+				E5BA275D1E49AB94000AB2C1 /* CustomCell.swift in Sources */,
+>>>>>>> origin/허-정화
 				ED62FD931E445A51000A92D2 /* Note.swift in Sources */,
 				ED62FD961E445A51000A92D2 /* NotesViewController.swift in Sources */,
 				EDBD7C261E42FE2B0013EEC6 /* CameraViewController.swift in Sources */,
+				E5BA275F1E49ABBF000AB2C1 /* DetailsViewController.swift in Sources */,
 				ED62FD941E445A51000A92D2 /* NoteDetailsViewController.swift in Sources */,
 				ED62FD921E445A51000A92D2 /* Database.swift in Sources */,
 				E57D95211E2F5BD6003B40AC /* AppDelegate.swift in Sources */,

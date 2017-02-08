@@ -11,10 +11,14 @@ import UIKit
 class RecordTableViewController: UITableViewController {
 
     var selectedSubject:Subject?
+    var isVisible:[Bool]=[]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        for _ in 0...selectedSubject!.records.count-1{
+            isVisible+=[false]
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -36,24 +40,37 @@ class RecordTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return (selectedSubject?.records.count)!
+        var count:Int = (selectedSubject?.records.count)!
+        for i in 0...selectedSubject!.records.count-1{
+            if isVisible[i]{
+                let p:Record = (selectedSubject?.records[i])!
+                count+=p.memos.count+1
+            }
+        }
+        
+        return count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "fileList", for: indexPath) as! ListTableViewCell
 
+        
         // Configure the cell...
         
         let num = indexPath.row
         cell.listenImage.image = UIImage(named: "143-512")
         cell.dateLabel.text = (selectedSubject?.records[num].date)! + " 수업"
         cell.recordLength.text = "(" + (selectedSubject?.records[num].length)! + ")"
-        cell.checkBox.image = UIImage(named: "check-mark-11-xxl")
 
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
+        let indexOfTappedRow = indexPath.row
+        
+        print(indexOfTappedRow)
+    }
 
     /*
     // Override to support conditional editing of the table view.

@@ -11,7 +11,8 @@ import AVFoundation
 
 class RecordViewController: UIViewController, AVAudioRecorderDelegate  {
     
-    var recordButton: UIButton!
+    @IBOutlet weak var recordButton: UIButton!
+    
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     
@@ -38,21 +39,28 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate  {
         // Do any additional setup after loading the view.
     }
     func loadRecordingUI() {
-        recordButton = UIButton(frame: CGRect(x: 0, y: 0, width: 64, height: 32))
-        recordButton.setTitle("Tap to Record", for: .normal)
-        recordButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1)
         recordButton.addTarget(self, action: #selector(recordTapped), for: .touchUpInside)
-        view.addSubview(recordButton)
+        //view.addSubview(recordButton)
+    }
+    func removepercent(str : String)-> String{
+        var temp:String=""
+        for i in str.characters{
+            if i != "%"{
+                temp.append(i)
+            }
+        }
+        return temp
     }
     func startRecording() {
         let now = NSDate()
         let cal = NSCalendar(calendarIdentifier:NSCalendar.Identifier(rawValue: NSGregorianCalendar))!
         let comps = cal.components([.year, .month, .day], from:now as Date)
 
-        let filename = (curClass?.name)! + comps.description + ".m4a"
-        print(filename)
-        let audioFilename = getDocumentsDirectory().appendingPathComponent("record/" + filename)
+
+        let filename = curClass!.name + String(comps.year!) + String(comps.month!) + String(comps.day!) + ".m4a"
         
+        var audioFilename = getDocumentsDirectory().appendingPathComponent(filename)
+        audioFilename = URL(string:removepercent(str: audioFilename.absoluteString))!
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
             AVSampleRateKey: 12000,
@@ -84,27 +92,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate  {
         audioRecorder.stop()
         audioRecorder = nil
         
-        if success {
-            recordButton.setTitle("Tap to Re-record", for: .normal)
-        } else {
-            recordButton.setTitle("Tap to Record", for: .normal)
-            // recording failed :(
-        }
+        
     }
     func recordTapped() {
         if audioRecorder == nil {
-            let filemgrCreate = FileManager.default
-            let dirPathsCreate = NSSearchPathForDirectoriesInDomains(.documentationDirectory, .userDomainMask, true)
-            let docsDirCreate = dirPathsCreate[0] as String
-            let newDirCreate = docsDirCreate.appending("/record")
-            print("[5] 디렉토리 생성전 DirectoryPath : \(docsDirCreate)")
-            print("[5] New directory path : \(newDirCreate)")
-            do {
-                try filemgrCreate.createDirectory(atPath: newDirCreate, withIntermediateDirectories: true, attributes:nil)
-            } catch {
-                print("[5] Failed to create dir!!")
-                print(error)
-            }
             startRecording()
         } else {
             finishRecording(success: true)
@@ -112,7 +103,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate  {
             do{
                 let fpath = String(describing: getDocumentsDirectory())
                 let index = fpath.index(fpath.startIndex, offsetBy: 7)
-                let filelist = try filemgrList.contentsOfDirectory(atPath: fpath.substring(from: index).appending("record"))
+                let temp = fpath.substring(from: index).appending("/")
+                let filelist = try filemgrList.contentsOfDirectory(atPath: temp)
                 for filename in filelist {
                     print("[4] \(filename)")
                 }
