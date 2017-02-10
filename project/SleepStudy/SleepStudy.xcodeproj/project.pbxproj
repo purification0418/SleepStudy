@@ -17,7 +17,6 @@
 		E57D95331E2F6076003B40AC /* UIViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D95321E2F6076003B40AC /* UIViewController+Navigation.swift */; };
 		E58E68641E37284B0062AC18 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58E68631E37284B0062AC18 /* TimeTableViewController.swift */; };
 		E58E68661E37325E0062AC18 /* RecordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58E68651E37325E0062AC18 /* RecordTableViewController.swift */; };
-		E5BA275D1E49AB94000AB2C1 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA275C1E49AB94000AB2C1 /* CustomCell.swift */; };
 		E5BA275F1E49ABBF000AB2C1 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA275E1E49ABBE000AB2C1 /* DetailsViewController.swift */; };
 		ED62FD911E445A51000A92D2 /* BackButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62FD8B1E445A51000A92D2 /* BackButtonDelegate.swift */; };
 		ED62FD921E445A51000A92D2 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62FD8C1E445A51000A92D2 /* Database.swift */; };
@@ -25,6 +24,7 @@
 		ED62FD941E445A51000A92D2 /* NoteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62FD8E1E445A51000A92D2 /* NoteDetailsViewController.swift */; };
 		ED62FD951E445A51000A92D2 /* NoteDetailsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62FD8F1E445A51000A92D2 /* NoteDetailsViewControllerDelegate.swift */; };
 		ED62FD961E445A51000A92D2 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62FD901E445A51000A92D2 /* NotesViewController.swift */; };
+		ED7A3EF21E4D973300235B02 /* SubjectModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED7A3EF01E4D973300235B02 /* SubjectModel.xcdatamodeld */; };
 		ED96D6F11E4AFFE50062D5A5 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED96D6F01E4AFFE50062D5A5 /* NotificationTableViewController.swift */; };
 		EDBD7C261E42FE2B0013EEC6 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBD7C251E42FE2B0013EEC6 /* CameraViewController.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +50,7 @@
 		ED62FD8E1E445A51000A92D2 /* NoteDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailsViewController.swift; sourceTree = "<group>"; };
 		ED62FD8F1E445A51000A92D2 /* NoteDetailsViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailsViewControllerDelegate.swift; sourceTree = "<group>"; };
 		ED62FD901E445A51000A92D2 /* NotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		ED7A3EF11E4D973300235B02 /* SubjectModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SubjectModel.xcdatamodel; sourceTree = "<group>"; };
 		ED96D6F01E4AFFE50062D5A5 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
 		EDBD7C251E42FE2B0013EEC6 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = ../CameraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,13 +88,14 @@
 			isa = PBXGroup;
 			children = (
 				ED62FD8C1E445A51000A92D2 /* Database.swift */,
+				E57D95241E2F5BD6003B40AC /* Main.storyboard */,
 				EDF8185E1E49BACC000BABDF /* memo */,
 				E57D95201E2F5BD6003B40AC /* AppDelegate.swift */,
 				E57D95221E2F5BD6003B40AC /* ViewController.swift */,
 				ED96D6F01E4AFFE50062D5A5 /* NotificationTableViewController.swift */,
 				E58E68631E37284B0062AC18 /* TimeTableViewController.swift */,
 				E57D95321E2F6076003B40AC /* UIViewController+Navigation.swift */,
-				E57D95241E2F5BD6003B40AC /* Main.storyboard */,
+				ED7A3EF01E4D973300235B02 /* SubjectModel.xcdatamodeld */,
 				E57D95271E2F5BD6003B40AC /* Assets.xcassets */,
 				E57D95291E2F5BD6003B40AC /* LaunchScreen.storyboard */,
 				E57D952C1E2F5BD6003B40AC /* Info.plist */,
@@ -198,6 +200,7 @@
 				E58E68641E37284B0062AC18 /* TimeTableViewController.swift in Sources */,
 				E51F2F231E4319C7009DDF18 /* RecordViewController.swift in Sources */,
 				ED62FD931E445A51000A92D2 /* Note.swift in Sources */,
+				ED7A3EF21E4D973300235B02 /* SubjectModel.xcdatamodeld in Sources */,
 				ED62FD961E445A51000A92D2 /* NotesViewController.swift in Sources */,
 				EDBD7C261E42FE2B0013EEC6 /* CameraViewController.swift in Sources */,
 				E5BA275F1E49ABBF000AB2C1 /* DetailsViewController.swift in Sources */,
@@ -367,6 +370,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		ED7A3EF01E4D973300235B02 /* SubjectModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				ED7A3EF11E4D973300235B02 /* SubjectModel.xcdatamodel */,
+			);
+			currentVersion = ED7A3EF11E4D973300235B02 /* SubjectModel.xcdatamodel */;
+			path = SubjectModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E57D95151E2F5BD6003B40AC /* Project object */;
 }

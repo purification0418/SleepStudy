@@ -5,24 +5,27 @@
 //  Created by cscoi011 on 2017. 1. 24..
 //  Copyright © 2017년 KKUMA. All rights reserved.
 //
-
+/*
 import UIKit
 
-var curClass:Subject?
+var curClass:Subjects?
 
 class TimeTableViewController: UITableViewController {
 
     //var subjects = Subject(name: "과목명", prof: "교수이름", place: "장소", time:[(day:0,startTime:0,endTime:0)])
     
-    let subjects:[Subject] = [Subject(name: "조직행동론",prof: "전재욱",place: "LP 504호",time:[(0,840,915),(2,840,915)]),
-                              Subject(name: "네트워크",prof: "민성기",place: "정보관 202호",time:[(1,540,615),(3,540,615)]),
-                              Subject(name: "교직실무",prof: "김재덕",place: "교욱관 203호",time:[(0,600,730),(4,600,730)])]
     
+    
+ 
+    let subjects:[Subjects] = [Subjects(name: "조직행동론",prof: "전재욱",place: "LP 504호",time:[(0,840,915),(2,840,915)]),
+                              Subjects(name: "네트워크",prof: "민성기",place: "정보관 202호",time:[(1,540,615),(3,540,615)]),
+                              Subjects(name: "교직실무",prof: "김재덕",place: "교욱관 203호",time:[(0,600,730),(4,600,730)])]
+ 
 
     override func viewDidLoad() {
         curClass = subjects[0]
         super.viewDidLoad()
-
+    }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -45,6 +48,7 @@ class TimeTableViewController: UITableViewController {
                                 Record(path: "/rec/file9.mov",date: "3월 9일", length: "01:23:45")]
 */
         //==========================================================================
+        /*
         subjects[0].records[0].memos += [Memo(content: "서프라이즈 퀴즈 존재, 예습 복습 철저히 할 것",type: "퀴즈", time:880)]
         subjects[0].records[0].memos += [Memo(content: "기말고사는 범위 누적",type: "시험", time:900)]
         subjects[0].records[0].memos += [Memo(content: "다음 시간 교재 가져오기",type: "수업", time:908)]
@@ -85,6 +89,8 @@ class TimeTableViewController: UITableViewController {
         subjects[2].records[2].captures += [Capture(path: "/cap/pic3.png", time:1554)]
          
     }
+    */
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -174,7 +180,9 @@ class TimeTableViewController: UITableViewController {
         let selectedIndex = self.tableView.indexPathForSelectedRow?.row
         let selected = subjects[selectedIndex!]
         
-        destVC.selectedSubject = selected
+        destVC.selectedSubjects = selected
     }
 }
- 
+
+*/
+

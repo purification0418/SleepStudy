@@ -58,9 +58,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "subjects"
-            landmarkType = "24">
+            endingLineNumber = "18">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -121,7 +119,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
             endingLineNumber = "49"
-            landmarkName = "removepercent(str:)"
+            landmarkName = "loadRecordingUI()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -137,7 +135,99 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "56"
             endingLineNumber = "56"
-            landmarkName = "startRecording()"
+            landmarkName = "removepercent(str:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SleepStudy/TimeTableViewController.swift"
+            timestampString = "508403836.286003"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SleepStudy.TimeTableViewController.subjects.getter : Swift.Array&lt;SleepStudy.Subject&gt;"
+                  moduleName = "SleepStudy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cscoi010/Desktop/SleepStudy/project/SleepStudy/SleepStudy/TimeTableViewController.swift"
+                  timestampString = "508403836.705423"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "35">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SleepStudy.TimeTableViewController.init (style : __C.UITableViewStyle) -&gt; SleepStudy.TimeTableViewController"
+                  moduleName = "SleepStudy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cscoi010/Desktop/SleepStudy/project/SleepStudy/SleepStudy/TimeTableViewController.swift"
+                  timestampString = "508403836.706779"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "19">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SleepStudy.TimeTableViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; SleepStudy.TimeTableViewController"
+                  moduleName = "SleepStudy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cscoi010/Desktop/SleepStudy/project/SleepStudy/SleepStudy/TimeTableViewController.swift"
+                  timestampString = "508403836.708009"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "58">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SleepStudy.TimeTableViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;SleepStudy.TimeTableViewController&gt;"
+                  moduleName = "SleepStudy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cscoi010/Desktop/SleepStudy/project/SleepStudy/SleepStudy/TimeTableViewController.swift"
+                  timestampString = "508403836.70924"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SleepStudy/ViewController.swift"
+            timestampString = "508408507.889663"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -8,29 +8,134 @@
 
 import UIKit
 import Foundation
+import CoreData
 
 class ViewController: UIViewController {
-
-       
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var AllSubject: [NSManagedObject] = []
+    
+    @IBOutlet weak var tableview: UITableView!
+    @IBAction func addSubject(_ sender: AnyObject) {
+        let alert = UIAlertController(title: "New Subject",
+                                      message: "Add a new subject",
+                                      preferredStyle: .alert)
         
+        let saveAction = UIAlertAction(title: "Save",
+                                       style: .default) {
+                                        [unowned self] action in
+                                        
+                                        guard let textField = alert.textFields?.first, let nameToSave = textField.text else {
+                                                return
+                                        }
+                                        
+                                        self.name.append(nameToSave)
+                                        self.tableview.reloadData()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .default)
+        
+        alert.addTextField()
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+        
+        }
+    
+    var name: [String] = []
+    
+    func save(name: String) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        // 1
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        // 2
+        let entity =
+            NSEntityDescription.entity(forEntityName: "Subject", in: managedContext)!
+        
+        let allsubject = NSManagedObject(entity: entity,insertInto: managedContext)
+        
+        // 3
+       
+        allsubject.setValue(name, forKeyPath: "name")
+        
+        // 4
+        do {
+            try managedContext.save()
+            AllSubject.append(allsubject)
+            
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
     }
     
+    override func viewDidLoad() {
+        curClass = AllSubject[0]
+        super.viewDidLoad()
+
+        title = "The List"
+        tableview.register(UITableViewCell.self,
+                           forCellReuseIdentifier: "Cell")
+    }
     
-    override func didReceiveMemoryWarning() {
+        override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //1
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Person")
+        
+        //3
+        do {
+            AllSubject = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
 
     
     }
+extension ViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        return AllSubject.count
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell {
+            
+            let allsubject = AllSubject[indexPath.row]
+            let cell =
+                tableView.dequeueReusableCell(withIdentifier: "Cell",
+                                              for: indexPath)
+            cell.textLabel?.text = allsubject.value(forKeyPath:"name") as? String
+            return cell
+           
+            cell.textLabel?.text =
+                allsubject.value(forKeyPath: "name") as? String
 
+    }
+    
+        }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 extension Character {
     func unicodeScalarCodePoint() -> UInt32
     {
@@ -40,9 +145,8 @@ extension Character {
         return scalars[scalars.startIndex].value
     }
 }
-class Subject{
-    
-    
+
+class Subject {
     
     var name:String = ""
     var id:String
@@ -58,18 +162,6 @@ class Subject{
         self.prof = prof
         self.place = place
         self.time = time
-<<<<<<< HEAD
-=======
-        self.tohex()
-    }
-    
-    func tohex(){
-        for i in self.name.characters{
-            let temp = i.unicodeScalarCodePoint()
-            self.id += String(format: "%2X", temp)
-        }
-        print("\(self.name):\(self.id)")
->>>>>>> master
     }
 }
 
@@ -127,5 +219,7 @@ class Setting{
         theme = ""
         memotypes = []
     }
+    
 }
+
 

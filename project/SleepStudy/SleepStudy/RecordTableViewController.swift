@@ -10,9 +10,8 @@ import UIKit
 
 class RecordTableViewController: UITableViewController {
 
-    var selectedSubject:Subject?
+    var selectedSubject: Subject?
     
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
