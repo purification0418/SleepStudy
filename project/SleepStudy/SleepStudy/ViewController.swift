@@ -27,6 +27,10 @@ class ViewController: UIViewController {
     }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 extension Character {
     func unicodeScalarCodePoint() -> UInt32
     {
@@ -54,6 +58,18 @@ class Subject{
         self.prof = prof
         self.place = place
         self.time = time
+<<<<<<< HEAD
+=======
+        self.tohex()
+    }
+    
+    func tohex(){
+        for i in self.name.characters{
+            let temp = i.unicodeScalarCodePoint()
+            self.id += String(format: "%2X", temp)
+        }
+        print("\(self.name):\(self.id)")
+>>>>>>> master
     }
 }
 
