@@ -13,8 +13,14 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate  {
     
     @IBOutlet weak var recordButton: UIButton!
     
+    @IBOutlet weak var recordImage: UIImageView!
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
+    
+    @IBOutlet weak var sessionLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    var stop = false
     
     
     override func viewDidLoad() {
@@ -40,6 +46,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate  {
     }
     func loadRecordingUI() {
         recordButton.addTarget(self, action: #selector(recordTapped), for: .touchUpInside)
+        
         //view.addSubview(recordButton)
     }
     func removepercent(str : String)-> String{
@@ -51,16 +58,21 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate  {
         }
         return temp
     }
+    
+    var filenamefa:URL?
+    var dayStr:String?
+    
     func startRecording() {
         let now = NSDate()
-        let cal = NSCalendar(calendarIdentifier:NSCalendar.Identifier(rawValue: NSGregorianCalendar))!
+        let cal = NSCalendar(calendarIdentifier:NSCalendar.Identifier.gregorian)!
         let comps = cal.components([.year, .month, .day], from:now as Date)
 
 
-        let filename = curClass!.name + String(comps.year!) + String(comps.month!) + String(comps.day!) + ".m4a"
+        let filename = curClass!.id + String(comps.year!) + String(comps.month!) + String(comps.day!) + ".m4a"
         
-        var audioFilename = getDocumentsDirectory().appendingPathComponent(filename)
-        audioFilename = URL(string:removepercent(str: audioFilename.absoluteString))!
+        self.dayStr = "\(String(comps.year!))년 \(String(comps.month!))월 \(String(comps.day!))일"
+        let audioFilename = getDocumentsDirectory().appendingPathComponent(filename)
+        self.filenamefa = audioFilename
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
             AVSampleRateKey: 12000,
@@ -73,9 +85,34 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate  {
             audioRecorder.delegate = self
             audioRecorder.record()
             
-            recordButton.setTitle("Tap to Stop", for: .normal)
+            recordImage.image=UIImage(named:"Stop")
+            sessionLabel.text = "녹음 중"
+            stop = false
+            getTime()
         } catch {
             finishRecording(success: false)
+        }
+        
+        
+    }
+    var currentTime = 0
+    var lengthfa:String?
+    func getTime(){
+        self.currentTime = 0
+        var timer:Timer?
+            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true){  _ in
+            
+            self.currentTime += 1
+            let hour = String(format: "%02d", self.currentTime/3600)
+            let minute = String(format: "%02d", self.currentTime/60%60)
+            let second = String(format: "%02d", self.currentTime%60)
+            let length = "\(hour):\(minute):\(second)"
+            self.timeLabel.text = length
+            self.lengthfa = length
+            if self.stop{
+                timer?.invalidate()
+                return
+            }
         }
     }
     func getDocumentsDirectory() -> URL {
@@ -91,8 +128,9 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate  {
     func finishRecording(success: Bool) {
         audioRecorder.stop()
         audioRecorder = nil
-        
-        
+        recordImage.image=UIImage(named:"Microphone-outlined-circular-button")
+        self.stop = true
+        curClass?.records += [Record(path: filenamefa!,date:dayStr!,length:lengthfa!)]
     }
     func recordTapped() {
         if audioRecorder == nil {

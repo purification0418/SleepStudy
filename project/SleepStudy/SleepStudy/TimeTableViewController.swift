@@ -30,9 +30,9 @@ class TimeTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         //여기에 추가
-        
+        /*
        
-        subjects[0].records += [Record(path: "/rec/file1.mov",date: "3월 2일", length: "01:23:45"),
+        subjects[0].records += [Record(path: "/rec/file1.mov",date: "3월 2일",length: "01:23:45"),
                                 Record(path: "/rec/file2.mov",date: "3월 4일", length: "01:23:45"),
                                 Record(path: "/rec/file3.mov",date: "3월 9일", length: "01:23:45")]
         
@@ -43,7 +43,7 @@ class TimeTableViewController: UITableViewController {
         subjects[2].records += [Record(path: "/rec/file7.mov",date: "3월 2일", length: "01:23:45"),
                                 Record(path: "/rec/file8.mov",date: "3월 6일", length: "01:23:45"),
                                 Record(path: "/rec/file9.mov",date: "3월 9일", length: "01:23:45")]
-
+*/
         //==========================================================================
         subjects[0].records[0].memos += [Memo(content: "서프라이즈 퀴즈 존재, 예습 복습 철저히 할 것",type: "퀴즈", time:880)]
         subjects[0].records[0].memos += [Memo(content: "기말고사는 범위 누적",type: "시험", time:900)]

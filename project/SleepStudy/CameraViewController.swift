@@ -28,13 +28,11 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate,UI
         // Dispose of any resources that can be recreated.
     }
     
-   // @IBAction func OpenAlbum(_ sender: Any) {
     @IBAction func openAlbum(_ sender: Any) {
        
         openGallery ()
     }
     
-   // @IBAction func TakePhoto(_ sender: Any) {
 
     @IBAction func TakePhoto(_ sender: Any) {
     

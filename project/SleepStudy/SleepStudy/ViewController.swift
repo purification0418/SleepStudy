@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Foundation
 
 class ViewController: UIViewController {
 
        
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     
@@ -23,14 +25,23 @@ class ViewController: UIViewController {
 
     
     }
-    
-var allsubjects: Array<Subject> = []
 
+
+extension Character {
+    func unicodeScalarCodePoint() -> UInt32
+    {
+        let characterString = String(self)
+        let scalars = characterString.unicodeScalars
+        
+        return scalars[scalars.startIndex].value
+    }
+}
 class Subject{
     
     
     
     var name:String = ""
+    var id:String
     var prof:String = ""
     var place:String = ""
     
@@ -39,11 +50,10 @@ class Subject{
     
     init(name: String, prof: String, place: String, time:[(day:Int,startTime:Int,endTime:Int)]){
         self.name = name
+        self.id = ""
         self.prof = prof
         self.place = place
         self.time = time
-        
-            
     }
 }
 
@@ -72,14 +82,14 @@ class Capture{
 
 class Record{
     
-    var path:String
+    var path:URL
     var memos:Array<Memo>
     var captures:Array<Capture>
     let date:String
     let length:String
     var playednum: Int
     
-    init(path:String, date:String, length:String){
+    init(path:URL, date:String, length:String){
         self.path = path
         self.date = date
         self.memos = []
