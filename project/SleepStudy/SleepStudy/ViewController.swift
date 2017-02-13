@@ -14,71 +14,16 @@ class ViewController: UIViewController {
     var AllSubject: [NSManagedObject] = []
     
     @IBOutlet weak var tableview: UITableView!
-    @IBAction func addSubject(_ sender: AnyObject) {
-        let alert = UIAlertController(title: "New Subject",
-                                      message: "Add a new subject",
-                                      preferredStyle: .alert)
-        
-        let saveAction = UIAlertAction(title: "Save",
-                                       style: .default) {
-                                        [unowned self] action in
-                                        
-                                        guard let textField = alert.textFields?.first, let nameToSave = textField.text else {
-                                                return
-                                        }
-                                        
-                                        self.name.append(nameToSave)
-                                        self.tableview.reloadData()
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel",
-                                         style: .default)
-        
-        alert.addTextField()
-        
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true)
-        
-        }
     
-    var name: [String] = []
-    
-    func save(name: String) {
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        // 1
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        // 2
-        let entity =
-            NSEntityDescription.entity(forEntityName: "Subject", in: managedContext)!
-        
-        let allsubject = NSManagedObject(entity: entity,insertInto: managedContext)
-        
-        // 3
-       
-        allsubject.setValue(name, forKeyPath: "name")
-        
-        // 4
-        do {
-            try managedContext.save()
-            AllSubject.append(allsubject)
-            
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-    }
-    
+    @NSManaged var name: String
+    @NSManaged var prof: String
+    @NSManaged var place: String
+
     override func viewDidLoad() {
-        curClass = AllSubject[0]
+      //  curClass = AllSubject[0]
         super.viewDidLoad()
 
-        title = "The List"
+        title = "All Subject"
         tableview.register(UITableViewCell.self,
                            forCellReuseIdentifier: "Cell")
     }
@@ -87,7 +32,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+        override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         //1
@@ -103,12 +48,11 @@ class ViewController: UIViewController {
         
         //3
         do {
-            AllSubject = try managedContext.fetch(fetchRequest)
+            _ = try managedContext.fetch(fetchRequest)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
-
     
     }
 extension ViewController: UITableViewDataSource {
@@ -128,14 +72,10 @@ extension ViewController: UITableViewDataSource {
                                               for: indexPath)
             cell.textLabel?.text = allsubject.value(forKeyPath:"name") as? String
             return cell
-           
-            cell.textLabel?.text =
-                allsubject.value(forKeyPath: "name") as? String
-
+            
     }
-    
-        }
 
+}
 extension Character {
     func unicodeScalarCodePoint() -> UInt32
     {
