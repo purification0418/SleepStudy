@@ -12,7 +12,7 @@ import CoreData
 
 class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UIActionSheetDelegate {
     
-     open var context: NSManagedObjectContext!
+    open var context: NSManagedObjectContext!
     var fetchedResultsController: NSFetchedResultsController<AllSubject>!
     
     @IBOutlet weak var tableview: UITableView!

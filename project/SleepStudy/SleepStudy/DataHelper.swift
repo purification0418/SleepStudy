@@ -22,7 +22,7 @@ public class DataHelper {
                         (name: "교직실무",prof: "김재덕",place: "교욱관 203호")]
         
         for subject in subjects {
-            let newSubject = NSEntityDescription.insertNewObject(forEntityName: "Subject", into: context) as! AllSubjects
+            let newSubject = NSEntityDescription.insertNewObject(forEntityName: "AllSubject", into: context) as! AllSubject
             newSubject.name = subject.name
             newSubject.prof = subject.prof
             newSubject.place = subject.prof
@@ -36,14 +36,14 @@ public class DataHelper {
     }
     
     public func printAllSubject() {
-        let subjectFetchRequest = NSFetchRequest<AllSubjects>(entityName: "Subject")
+        let subjectFetchRequest = NSFetchRequest<AllSubject>(entityName: "AllSubject")
         let primarySortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         
         subjectFetchRequest.sortDescriptors = [primarySortDescriptor]
         
-        let allSubjects = try! context.fetch(subjectFetchRequest)
+        let allSubject = try! context.fetch(subjectFetchRequest)
         
-        for subject in allSubjects {
+        for subject in allSubject {
             print("Subject Name: \(subject.name)\nPlace: \(subject.place) \n-------\n", terminator: "")
         }
     }

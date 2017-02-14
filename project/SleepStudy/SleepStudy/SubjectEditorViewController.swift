@@ -25,7 +25,7 @@ public class SubjectEditorViewController: UIViewController, UIPickerViewDataSour
     
     @IBAction func saveSubject(_ sender: Any) {
         
-        let newSubject = NSEntityDescription.insertNewObject(forEntityName: "Subject", into: context) as! AllSubject
+        let newSubject = NSEntityDescription.insertNewObject(forEntityName: "AllSubject", into: context) as! AllSubject
         
         if let nameText = name.text {
             newSubject.name = nameText
@@ -47,7 +47,7 @@ public class SubjectEditorViewController: UIViewController, UIPickerViewDataSour
     }
     
     func fetchAllSubject() -> [AllSubject] {
-        let fetchRequest = NSFetchRequest<AllSubject>(entityName: "Subject")
+        let fetchRequest = NSFetchRequest<AllSubject>(entityName: "AllSubject")
         
         do {
             let subject = try context.fetch(fetchRequest)
