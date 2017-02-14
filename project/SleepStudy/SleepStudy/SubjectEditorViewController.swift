@@ -22,7 +22,6 @@ public class SubjectEditorViewController: UIViewController, UIPickerViewDataSour
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var prof: UITextField!
     @IBOutlet weak var place: UITextField!
-    @IBOutlet weak var status: UILabel!
     
     @IBAction func saveSubject(_ sender: Any) {
         

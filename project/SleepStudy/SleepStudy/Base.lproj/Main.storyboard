@@ -77,7 +77,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NOi-8I-Ypt">
                             <connections>
                                 <action selector="addSubject:" destination="W42-0P-QSq" id="KAM-Ez-T6h"/>
-                                <segue destination="z7u-qB-WhW" kind="show" id="B9P-cx-cxQ"/>
+                                <segue destination="z7u-qB-WhW" kind="presentation" id="nPN-pU-eqk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -172,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="auc-eP-uYx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4456.8000000000002" y="-165.06746626686657"/>
+            <point key="canvasLocation" x="4495" y="-264"/>
         </scene>
         <!--Add Subject View Controller-->
         <scene sceneID="I3E-Sg-2SS">
@@ -191,7 +191,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Title" id="ObY-EA-ydc">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="done" id="Hp9-ar-f5R"/>
+                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="done" id="Hp9-ar-f5R">
+                                            <connections>
+                                                <segue destination="z7u-qB-WhW" kind="push" id="Pmg-2J-vCN"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -248,13 +252,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mr-tE-sFe">
-                                <rect key="frame" x="145" y="461" width="48" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add New Subject" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6na-38-eIl">
                                 <rect key="frame" x="64" y="135" width="233" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -265,11 +262,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="097-3V-hpj"/>
                     <connections>
                         <outlet property="name" destination="0so-BE-fwi" id="bcY-DG-8eK"/>
                         <outlet property="place" destination="h4l-KB-Yz5" id="nRG-57-0ec"/>
                         <outlet property="prof" destination="sCr-Jo-ddI" id="2ek-vp-c9I"/>
-                        <outlet property="status" destination="8mr-tE-sFe" id="HdB-Z9-4yU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmD-9H-dQJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -889,4 +886,7 @@
         <image name="htm_2013060413528b0103790" width="275" height="164"/>
         <image name="play-icon" width="256" height="256"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="nPN-pU-eqk"/>
+    </inferredMetricsTieBreakers>
 </document>
