@@ -18,7 +18,10 @@
 		E58E68641E37284B0062AC18 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58E68631E37284B0062AC18 /* TimeTableViewController.swift */; };
 		E58E68661E37325E0062AC18 /* RecordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58E68651E37325E0062AC18 /* RecordTableViewController.swift */; };
 		E5BA275F1E49ABBF000AB2C1 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA275E1E49ABBE000AB2C1 /* DetailsViewController.swift */; };
-		ED3535901E519FC000F9001A /* addSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED35358F1E519FC000F9001A /* addSubjectViewController.swift */; };
+		ED3535921E51A79C00F9001A /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3535911E51A79C00F9001A /* Subject.swift */; };
+		ED5DDEB61E5293C00079CD31 /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5DDEB51E5293C00079CD31 /* DataHelper.swift */; };
+		ED5DDEBA1E5297F20079CD31 /* SegueIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5DDEB91E5297F20079CD31 /* SegueIdentifiers.swift */; };
+		ED5DDEC01E52D7490079CD31 /* SubjectEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5DDEBF1E52D7490079CD31 /* SubjectEditorViewController.swift */; };
 		ED62FD911E445A51000A92D2 /* BackButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62FD8B1E445A51000A92D2 /* BackButtonDelegate.swift */; };
 		ED62FD921E445A51000A92D2 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62FD8C1E445A51000A92D2 /* Database.swift */; };
 		ED62FD931E445A51000A92D2 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62FD8D1E445A51000A92D2 /* Note.swift */; };
@@ -45,7 +48,10 @@
 		E58E68651E37325E0062AC18 /* RecordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableViewController.swift; sourceTree = "<group>"; };
 		E5BA275C1E49AB94000AB2C1 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		E5BA275E1E49ABBE000AB2C1 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
-		ED35358F1E519FC000F9001A /* addSubjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addSubjectViewController.swift; sourceTree = "<group>"; };
+		ED3535911E51A79C00F9001A /* Subject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
+		ED5DDEB51E5293C00079CD31 /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
+		ED5DDEB91E5297F20079CD31 /* SegueIdentifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueIdentifiers.swift; sourceTree = "<group>"; };
+		ED5DDEBF1E52D7490079CD31 /* SubjectEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectEditorViewController.swift; sourceTree = "<group>"; };
 		ED62FD8B1E445A51000A92D2 /* BackButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackButtonDelegate.swift; sourceTree = "<group>"; };
 		ED62FD8C1E445A51000A92D2 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		ED62FD8D1E445A51000A92D2 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
@@ -91,6 +97,8 @@
 			children = (
 				ED62FD8C1E445A51000A92D2 /* Database.swift */,
 				E57D95241E2F5BD6003B40AC /* Main.storyboard */,
+				ED5DDEB21E5291130079CD31 /* Camera */,
+				ED3535931E51A7A800F9001A /* ManageSubject */,
 				EDF8185E1E49BACC000BABDF /* memo */,
 				E57D95201E2F5BD6003B40AC /* AppDelegate.swift */,
 				E57D95221E2F5BD6003B40AC /* ViewController.swift */,
@@ -98,16 +106,33 @@
 				E58E68631E37284B0062AC18 /* TimeTableViewController.swift */,
 				E57D95321E2F6076003B40AC /* UIViewController+Navigation.swift */,
 				ED7A3EF01E4D973300235B02 /* SubjectModel.xcdatamodeld */,
-				ED35358F1E519FC000F9001A /* addSubjectViewController.swift */,
 				E57D95271E2F5BD6003B40AC /* Assets.xcassets */,
 				E57D95291E2F5BD6003B40AC /* LaunchScreen.storyboard */,
 				E57D952C1E2F5BD6003B40AC /* Info.plist */,
 				E58E68651E37325E0062AC18 /* RecordTableViewController.swift */,
 				E51F2F221E4319C7009DDF18 /* RecordViewController.swift */,
 				E507001F1E484F14003A2F43 /* ListTableViewCell.swift */,
-				EDBD7C251E42FE2B0013EEC6 /* CameraViewController.swift */,
 			);
 			path = SleepStudy;
+			sourceTree = "<group>";
+		};
+		ED3535931E51A7A800F9001A /* ManageSubject */ = {
+			isa = PBXGroup;
+			children = (
+				ED5DDEB91E5297F20079CD31 /* SegueIdentifiers.swift */,
+				ED5DDEBF1E52D7490079CD31 /* SubjectEditorViewController.swift */,
+				ED5DDEB51E5293C00079CD31 /* DataHelper.swift */,
+				ED3535911E51A79C00F9001A /* Subject.swift */,
+			);
+			name = ManageSubject;
+			sourceTree = "<group>";
+		};
+		ED5DDEB21E5291130079CD31 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				EDBD7C251E42FE2B0013EEC6 /* CameraViewController.swift */,
+			);
+			name = Camera;
 			sourceTree = "<group>";
 		};
 		EDF8185E1E49BACC000BABDF /* memo */ = {
@@ -196,18 +221,21 @@
 			files = (
 				ED96D6F11E4AFFE50062D5A5 /* NotificationTableViewController.swift in Sources */,
 				E50700201E484F14003A2F43 /* ListTableViewCell.swift in Sources */,
+				ED5DDEBA1E5297F20079CD31 /* SegueIdentifiers.swift in Sources */,
 				ED62FD951E445A51000A92D2 /* NoteDetailsViewControllerDelegate.swift in Sources */,
+				ED5DDEB61E5293C00079CD31 /* DataHelper.swift in Sources */,
 				E57D95331E2F6076003B40AC /* UIViewController+Navigation.swift in Sources */,
 				E57D95231E2F5BD6003B40AC /* ViewController.swift in Sources */,
 				ED62FD911E445A51000A92D2 /* BackButtonDelegate.swift in Sources */,
 				E58E68641E37284B0062AC18 /* TimeTableViewController.swift in Sources */,
 				E51F2F231E4319C7009DDF18 /* RecordViewController.swift in Sources */,
+				ED3535921E51A79C00F9001A /* Subject.swift in Sources */,
 				ED62FD931E445A51000A92D2 /* Note.swift in Sources */,
 				ED7A3EF21E4D973300235B02 /* SubjectModel.xcdatamodeld in Sources */,
 				ED62FD961E445A51000A92D2 /* NotesViewController.swift in Sources */,
-				ED3535901E519FC000F9001A /* addSubjectViewController.swift in Sources */,
 				EDBD7C261E42FE2B0013EEC6 /* CameraViewController.swift in Sources */,
 				E5BA275F1E49ABBF000AB2C1 /* DetailsViewController.swift in Sources */,
+				ED5DDEC01E52D7490079CD31 /* SubjectEditorViewController.swift in Sources */,
 				ED62FD941E445A51000A92D2 /* NoteDetailsViewController.swift in Sources */,
 				ED62FD921E445A51000A92D2 /* Database.swift in Sources */,
 				E57D95211E2F5BD6003B40AC /* AppDelegate.swift in Sources */,

@@ -68,7 +68,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate  {
         let comps = cal.components([.year, .month, .day], from:now as Date)
 
 
-        let filename = curClass!.id + String(comps.year!) + String(comps.month!) + String(comps.day!) + ".m4a"
+   /*    let filename = curClass!.id + String(comps.year!) + String(comps.month!) + String(comps.day!) + ".m4a"
         
         self.dayStr = "\(String(comps.year!))년 \(String(comps.month!))월 \(String(comps.day!))일"
         let audioFilename = getDocumentsDirectory().appendingPathComponent(filename)
@@ -93,7 +93,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate  {
             finishRecording(success: false)
         }
         
-        
+      */  
     }
     var currentTime = 0
     var lengthfa:String?
@@ -130,7 +130,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate  {
         audioRecorder = nil
         recordImage.image=UIImage(named:"Microphone-outlined-circular-button")
         self.stop = true
-        curClass?.records += [Record(path: filenamefa!,date:dayStr!,length:lengthfa!)]
+     //   curClass?.records += [Record(path: filenamefa!,date:dayStr!,length:lengthfa!)]
     }
     func recordTapped() {
         if audioRecorder == nil {

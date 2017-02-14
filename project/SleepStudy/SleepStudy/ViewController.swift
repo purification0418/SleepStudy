@@ -10,72 +10,182 @@ import UIKit
 import Foundation
 import CoreData
 
-class ViewController: UIViewController {
-    var AllSubject: [NSManagedObject] = []
+class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UIActionSheetDelegate {
+    
+     open var context: NSManagedObjectContext!
+    var fetchedResultsController: NSFetchedResultsController<AllSubject>!
     
     @IBOutlet weak var tableview: UITableView!
     
-    @NSManaged var name: String
-    @NSManaged var prof: String
-    @NSManaged var place: String
-
     override func viewDidLoad() {
-      //  curClass = AllSubject[0]
+       //curClass = AllSubject[0]
         super.viewDidLoad()
 
         title = "All Subject"
         tableview.register(UITableViewCell.self,
                            forCellReuseIdentifier: "Cell")
-    }
-    
-        override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-        override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //1
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        //2
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Person")
-        
-        //3
+               
         do {
-            _ = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+            try fetchedResultsController.performFetch()
+        } catch {
+            print("An error occurred")
+            
+        }
+    }
+  
+    func configureFetchedResultsController() {
+        let subjectFetchRequest = NSFetchRequest<AllSubject>(entityName: "Subject")
+        let primarySortDescriptor = NSSortDescriptor(key: "prof", ascending: true)
+        let secondarySortDescriptor = NSSortDescriptor(key: "place", ascending: true)
+        subjectFetchRequest.sortDescriptors = [primarySortDescriptor, secondarySortDescriptor]
+        
+        self.fetchedResultsController = NSFetchedResultsController<AllSubject>(
+            fetchRequest: subjectFetchRequest,
+            managedObjectContext: self.context,
+            sectionNameKeyPath: "subject.order",
+            cacheName: nil)
+        self.fetchedResultsController.delegate = self
+        
+        }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        if let sections = fetchedResultsController.sections {
+            return sections.count
+        }
+        return 0
+    }
+
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        if let sections = fetchedResultsController.sections {
+            let currentSection = sections[section]
+            return currentSection.numberOfObjects
+            
+        }
+        return 0
+    }
+
+    public func tableView(_ tableView: UITableView, cellForRowAt indextPath: IndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indextPath)
+        let subject = fetchedResultsController.object(at: indextPath)
+        
+        cell.textLabel?.text = subject.name
+        cell.detailTextLabel?.text = subject.prof
+        
+        return cell
+        
+    }
+
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            let subject = fetchedResultsController.object(at: indexPath)
+            confirmDeleteForSubject(subject)
+        }
+        
+    }
+    
+    var subjectToDelete: AllSubject?
+    
+    func confirmDeleteForSubject(_ subject: AllSubject) {
+        self.subjectToDelete = subject
+        let confirmDeleteActionSheet = UIActionSheet(title: "Are you sure you want to permanently delete \(subject.name)?", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: "Delete")
+        confirmDeleteActionSheet.show(in: self.view)
+    }
+    
+    public func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int) {
+        if buttonIndex == 0 {
+            deleteSubject()
+        } else {
+
         }
     }
     
-    }
-extension ViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
-        return AllSubject.count
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath)
-        -> UITableViewCell {
+    func deleteSubject() {
+        if let verseToDelete = self.subjectToDelete {
+            self.context.delete(verseToDelete)
+            do {
+                try self.context.save()
+            } catch {
+            }
             
-            let allsubject = AllSubject[indexPath.row]
-            let cell =
-                tableView.dequeueReusableCell(withIdentifier: "Cell",
-                                              for: indexPath)
-            cell.textLabel?.text = allsubject.value(forKeyPath:"name") as? String
-            return cell
-            
+        self.subjectToDelete = nil
     }
 
 }
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableview.beginUpdates()
+    }
+    
+   public func controller(
+        _ controller: NSFetchedResultsController<NSFetchRequestResult>,
+        didChange anObject: Any,
+        at indexPath: IndexPath?,
+        for type: NSFetchedResultsChangeType,
+        newIndexPath: IndexPath?) {
+       
+        switch type {
+        case NSFetchedResultsChangeType.insert:
+            if let insertIndexPath = newIndexPath {
+                self.tableview.insertRows(at: [insertIndexPath], with: UITableViewRowAnimation.fade)
+            }
+        case NSFetchedResultsChangeType.delete:
+            if let deleteIndexPath = indexPath {
+                self.tableview.deleteRows(at: [deleteIndexPath], with: UITableViewRowAnimation.fade)
+            }
+        case NSFetchedResultsChangeType.update:
+            if let updateIndexPath = indexPath {
+                let cell = self.tableview.cellForRow(at: updateIndexPath)
+                let subject = self.fetchedResultsController.object(at: updateIndexPath)
+                
+                cell?.textLabel?.text = subject.name
+                cell?.detailTextLabel?.text = subject.place
+            }
+        case NSFetchedResultsChangeType.move:
+            if let deleteIndexPath = indexPath {
+                self.tableview.deleteRows(at: [deleteIndexPath], with: UITableViewRowAnimation.fade)
+            }
+            
+            if let insertIndexPath = newIndexPath {
+                self.tableview.insertRows(at: [insertIndexPath], with: UITableViewRowAnimation.fade)
+            }
+        }
+    }
+    
+    public func controller(
+        _ controller: NSFetchedResultsController<NSFetchRequestResult>,
+        didChange sectionInfo: NSFetchedResultsSectionInfo,
+        atSectionIndex sectionIndex: Int,
+        for type: NSFetchedResultsChangeType) {
+        
+        switch type {
+        case .insert:
+            let sectionIndexSet = IndexSet(integer: sectionIndex)
+            self.tableview.insertSections(sectionIndexSet, with: UITableViewRowAnimation.fade)
+        case .delete:
+            let sectionIndexSet = IndexSet(integer: sectionIndex)
+            self.tableview.deleteSections(sectionIndexSet, with: UITableViewRowAnimation.fade)
+        default:
+            break
+        }
+    }
+    public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableview.endUpdates()
+    }
+    
+    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueIdentifiers.SubjectEditorSegue.rawValue {
+            let destination = segue.destination as! SubjectEditorViewController
+            destination.context = self.context
+        }
+    }
+    
+}
+
+
 extension Character {
     func unicodeScalarCodePoint() -> UInt32
     {
